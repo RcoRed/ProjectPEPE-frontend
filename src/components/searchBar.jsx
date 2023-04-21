@@ -1,9 +1,9 @@
-function SearchBar() {
+function Searchbar() {
     return (
-        <div className="searchBar">
-            <input placeholder="Cerca una ricetta..." id="searchBarInput"></input>
+        <div className="searchbar">
+            <input placeholder="Cerca una ricetta..." id="searchbarInput"></input>
         </div>
 
     );
 }
-export default SearchBar;
+export default Searchbar;

@@ -5,23 +5,23 @@
   font-family: 'Karla', sans-serif;
 }
 
-#searchBarInput{
+#searchbarInput{
   height: 40px;
   border-radius: 10px;
   border: 2px solid #DFA67B;
   width: 100%;
 }
-#searchBarInput::placeholder{
+#searchbarInput::placeholder{
   padding: 5px;
   font-size: 1rem;
 
 }
-#searchBarInput:focus{
+#searchbarInput:focus{
   outline: none !important;
   border: 2px solid #fa6c00;
 
 }
-.searchBar{
+.searchbar{
   width: 30%;
 }
 header{
@@ -91,3 +91,23 @@ nav{
   display:flex;
   justify-content: center;
 }
+main{
+  height: 100vh;
+}
+.divImage{
+  height: 300px;
+  width: 500px;
+  object-fit: contain;
+ 
+}
+img{
+  height: 100%;
+  width: 100%;
+}
+.title-card{
+  margin-top: -50px;
+  color: white;
+  font-size: 2rem;
+}
+
+

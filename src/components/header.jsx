@@ -1,4 +1,5 @@
-import SearchBar from "./searchBar";
+import { Link } from "react-router-dom";
+import Searchbar from "./searchbar";
 
 function Header() {
     return (
@@ -7,9 +8,9 @@ function Header() {
                 <div className="div-button">
                     <button className="button">Menu</button>
                 </div>
-                <SearchBar />
+                <Searchbar />
                 <div className="div-button">
-                    <button className="button">Accedi</button>
+                    <Link to={"login"}><button className="button">Accedi/Registrati</button></Link>
                 </div>
             </div>
             <nav>
