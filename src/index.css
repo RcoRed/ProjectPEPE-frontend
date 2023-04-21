@@ -1,12 +1,62 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #searchBarInput{
   height: 30px;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 header{
   display:flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+
 }
 .button{
   border-radius: 15px;
   background-color: orange;
+}
+.div1{
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+}
+
+.menu{
+  display: flex;
+  text-align: center;
+
+ 
+}
+
+.menu li{
+  display: inline;
+  width: 150px;
+}
+
+.menu a{
+  color: black;
+  text-decoration: none;
+}
+.menu-button{
+  background-color: transparent;
+  width:70%;
+  padding: 15px;
+  border-radius: 5px;
+  border: none;
+  transition: 0.2s ease-in-out;
+}
+.menu-button:hover{
+  background-color: aliceblue;
+  cursor: pointer;
+
+}
+nav{
+  margin-top: 10px;
+  background-color: rgb(251, 248, 116);
+  width: 100%;
+  display:flex;
+  justify-content: center;
 }

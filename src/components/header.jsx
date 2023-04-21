@@ -1,11 +1,26 @@
 import SearchBar from "./searchBar";
 
-function Header(){
+function Header() {
     return (
         <header>
-            <button className="button">Menu</button>
-            <SearchBar />
-            <button className="button">Accedi</button>
+            <div className="div1">
+                <div>
+                    <button className="button">Menu</button>
+                </div>
+                <SearchBar />
+                <div>
+                    <button className="button">Accedi</button>
+                </div>
+            </div>
+            <nav>
+                <ul className="menu">
+                     <li><a href="#"><button className="menu-button">Home</button></a></li> 
+                     <li><a href="#"><button className="menu-button">Antipasti</button></a></li> 
+                     <li><a href="#"><button className="menu-button">Primi</button></a></li> 
+                     <li><a href="#"><button className="menu-button">Secondi</button></a></li> 
+                     <li><a href="#"><button className="menu-button">Dessert</button></a></li> 
+                </ul>
+            </nav>
         </header>
     );
 
