@@ -4,11 +4,11 @@ function Header() {
     return (
         <header>
             <div className="div1">
-                <div>
+                <div className="div-button">
                     <button className="button">Menu</button>
                 </div>
                 <SearchBar />
-                <div>
+                <div className="div-button">
                     <button className="button">Accedi</button>
                 </div>
             </div>

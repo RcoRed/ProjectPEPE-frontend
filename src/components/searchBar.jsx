@@ -1,7 +1,7 @@
 function SearchBar() {
     return (
         <div className="searchBar">
-            <input placeholder="nome della ricetta" id="searchBarInput"></input>
+            <input placeholder="Cerca una ricetta..." id="searchBarInput"></input>
         </div>
 
     );
