@@ -1,0 +1,70 @@
+header{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  
+  }
+  .button{
+    border-radius: 10px;
+    background-color: #FFF2CC;
+    height: 100%;
+    padding: 15px 40px;
+    border: 1px solid #DFA67B;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  .button:hover{
+    cursor: pointer;
+    background-color: #F4B183;
+    color: #ffffff;
+  }
+  
+  .div1{
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    padding: 10px;
+    align-items: center;
+  }
+  
+.menu{
+    display: flex;
+    text-align: center;
+  
+   
+  }
+  
+  .menu li{
+    display: inline;
+    width: 150px;
+  }
+  
+  .menu a{
+    color: black;
+    text-decoration: none;
+    
+  }
+  .menu-button{
+    background-color: transparent;
+    width:70%;
+    padding: 15px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    border: none;
+    transition: 0.2s ease-in-out;
+  }
+  .menu-button:hover{
+    background-color: #FFF2CC;
+    cursor: pointer;
+  
+  }
+  nav{
+    margin-top: 10px;
+    background-color: #FFD966;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+  }
+  main{
+    height: 100vh;
+  }

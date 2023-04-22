@@ -1,3 +1,5 @@
+import '/src/components-style/registration-form.css'
+
 function RegistrationForm() {
     return (
         <form method="POST">

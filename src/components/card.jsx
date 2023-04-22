@@ -1,4 +1,5 @@
 import Carbonara from './Espaguetis_carbonara.jpg';
+import '/src/components-style/card.css'
 
 function Card() {
     return (
