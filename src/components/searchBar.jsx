@@ -1,3 +1,5 @@
+import '/src/components-style/searchbar.css'
+
 function Searchbar() {
     return (
         <div className="searchbar">
