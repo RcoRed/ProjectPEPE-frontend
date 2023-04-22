@@ -1,0 +1,1 @@
+import '/src/components-style/footer.css'
