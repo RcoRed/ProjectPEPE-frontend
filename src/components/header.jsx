@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Searchbar from "./searchbar";
+import Searchbar from "./searchBar";
 
 function Header() {
     return (
