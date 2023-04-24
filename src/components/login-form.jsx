@@ -3,7 +3,7 @@ import '/src/components-style/login-form.css'
 function LoginForm() {
     return (
         <div className="container">
-            <form method="GET">
+            <form method="GET" className="login-form">
                 <div className="input-div">
                     <label htmlFor="email">Email</label>
                     <input type="email" name="email" placeholder="example_pepe@email.com" className="input-text"></input>

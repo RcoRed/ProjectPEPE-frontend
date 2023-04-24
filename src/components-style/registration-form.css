@@ -1,0 +1,91 @@
+.registration-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  background-color: #ffd966;
+  min-height: 70%;
+  padding: 50px;
+  min-width: 30%;
+  border-radius: 5px;
+}
+
+.separator {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.center-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.center-div:last-child{
+    margin-right: 0;
+}
+
+.space-div {
+  width: 100%;
+}
+
+.separator div {
+  width: 100%;
+}
+
+.registration-input-div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.registration-input-div input,
+select {
+  height: 40px;
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid #dfa67b;
+  padding-left: 7px;
+}
+
+.registration-input-div input[type="text"] {
+  width: 95%;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+}
+
+input[type="date"],
+#sex {
+  width: 70%;
+}
+
+.registration-button {
+  border-radius: 10px;
+  background-color: #fff2cc;
+  height: 100%;
+  padding: 15px 40px;
+  border: 1px solid #dfa67b;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.registration-button:hover {
+  cursor: pointer;
+  background-color: #f4b183;
+  color: #ffffff;
+}
