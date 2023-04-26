@@ -7,7 +7,7 @@ function Card() {
     const [recipes, setRecipes] = useState([]);
     
     async function getRecipe(){
-        const result = await apiRecipe("FIRST");        
+        const result = await apiRecipe("DESSERT");        
         setRecipes(result);
     }
     const renderedCard = recipes.map((recipe) => {
