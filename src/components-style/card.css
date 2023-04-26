@@ -1,13 +1,22 @@
 .divImage{
     height: 300px;
-    width: 500px;
-    object-fit: contain;
-   
+    width: 500px; 
   }
+
+  .div-cards{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px;
+    width: 100vw;
+  }
+
   img{
     height: 100%;
     width: 100%;
   }
+
   .title-card{
     margin-top: -50px;
     color: white;
