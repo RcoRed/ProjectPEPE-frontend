@@ -3,10 +3,10 @@ import '/src/components-style/searchbar.css'
 
 function Searchbar() {
     return (
-        <Form className="searchbar" method='GET' action='searchrecipe'>
+        <Form className="searchbar" action='/searchrecipe'>
             <input
-                name='searchbarInput' 
-                placeholder="Cerca una ricetta..." 
+                name='searchbarInput'
+                placeholder="Cerca una ricetta..."
                 id="searchbarInput"/>
         </Form>
     );
