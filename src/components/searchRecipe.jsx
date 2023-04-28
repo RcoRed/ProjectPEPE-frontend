@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import Card from "./card";
+import Card from "./cards";
 import Header from "./header";
 
 export async function loader({ request }) {

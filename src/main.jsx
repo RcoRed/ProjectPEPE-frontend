@@ -1,54 +1,47 @@
-import React, { Children } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginForm from "./components/login-form";
 import RegistrationForm from "./components/registration-form";
-import Appetizer from "./components/appetizer";
-import First from "./components/first";
-import Second from "./components/second";
-import Dessert from "./components/dessert";
-import Home from "./components/home";
-import SearchRecipe, {
-  loader as searchLoader,
-} from "./components/searchRecipe";
+import Cards, { loader as cardsLoader } from "./components/cards";
+import ErrorPage from "./error-page";
+import RecipeRedirect from "./components/recipe-redirect";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
+        errorElement: <ErrorPage />,
         children: [
           {
             index: true,
-            element: <Home />,
+            element: <Cards />,
+            loader: cardsLoader,
           },
           {
-            path: "appetizer",
-            element: <Appetizer />,
+            path: "/:myDish",
+            element: <RecipeRedirect />,
           },
-          {
-            path: "first",
-            element: <First />,
-          },
-          {
-            path: "second",
-            element: <Second />,
-          },
-          {
-            path: "dessert",
-            element: <Dessert />,
-          },
+          //{
+          //   path: "first",
+          //   element: <Cards />,
+          // },
+          // {
+          //   path: "second",
+          //   element: <Cards />,
+          // },
+          // {
+          //   path: "dessert",
+          //   element: <Cards />,
+          // },
         ],
       },
     ],
-  },
-  {
-    path: "/searchrecipe",
-    element: <SearchRecipe />,
-    loader: searchLoader,
   },
   {
     path: "/login",

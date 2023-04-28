@@ -1,14 +1,14 @@
-#searchbarInput{
+#inputName{
     height: 50px;
     border-radius: 10px;
     border: 2px solid #DFA67B;
     width: 100%;
     padding-left: 7px;
   }
-  #searchbarInput::placeholder{
+  #inputName::placeholder{
     font-size: 1rem;
   }
-  #searchbarInput:focus{
+  #inputName:focus{
     outline: none !important;
     border: 2px solid #fa6c00;
   }

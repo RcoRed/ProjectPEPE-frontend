@@ -1,23 +1,17 @@
-import './App.css'
-import Header from './components/header'
-import { Outlet } from 'react-router-dom'
+import "./App.css";
+import Header from "./components/header";
+import { Outlet } from "react-router-dom";
 
-
-function App() {
+export default function App() {
   return (
     <div className="App">
       <Header />
       <main>
-        <Outlet/> 
-        
+        <Outlet />
       </main>
       <footer>
-
+        <h2>SONO IL FOOTER</h2>
       </footer>
-
-
     </div>
-  )
+  );
 }
-
-export default App
