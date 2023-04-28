@@ -3,11 +3,11 @@ import ShowCard from "./showCard";
 import { useEffect, useState } from "react";
 import apiRecipe from "../api";
 
-function Card({ dish }) {
+function Card({ dish, recipeName }) {
   const [recipes, setRecipes] = useState([]);
 
   async function getRecipe() {
-    const result = await apiRecipe(dish);
+    const result = await apiRecipe(dish, recipeName);
     setRecipes(result);
   }
   const renderedCard = recipes.map((recipe) => {

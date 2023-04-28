@@ -10,6 +10,7 @@ import First from './components/first';
 import Second from './components/second';
 import Dessert from './components/dessert';
 import Home from './components/home';
+import SearchRecipe from './components/searchRecipe';
 
 
 const router = createBrowserRouter([
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
           {
             path: "dessert",
             element: <Dessert />
+          },
+          {
+            path: "searchrecipe",
+            element: <SearchRecipe />
           }
         ]        
       }

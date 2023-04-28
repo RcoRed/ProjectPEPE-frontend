@@ -4,7 +4,7 @@ export default function Dessert() {
   return (
     <>
       <div className="cards-div">
-        <Card dish="SECOND" />
+        <Card dish="DESSERT" />
       </div>
     </>
   );
