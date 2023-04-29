@@ -34,12 +34,12 @@ header {
   grid-column: 2 / 3;
 }
 
-.div1 {
+.head {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(1, 100px);
   width: 100%;
-  padding: 10px;  
+  padding: 10px;
 }
 
 .menu {
@@ -76,6 +76,4 @@ nav {
   display: flex;
   justify-content: center;
 }
-main {
-  height: 100vh;
-}
+

@@ -1,19 +1,19 @@
-#inputName{
-    height: 50px;
-    border-radius: 10px;
-    border: 2px solid #DFA67B;
-    width: 100%;
-    padding-left: 7px;
-  }
-  #inputName::placeholder{
-    font-size: 1rem;
-  }
-  #inputName:focus{
-    outline: none !important;
-    border: 2px solid #fa6c00;
-  }
-  .searchbar{
-    grid-column: 5 / 9;
-    display: flex;
-    align-items: center;
-  }
+#inputRecipeName {
+  height: 50px;
+  border-radius: 10px;
+  border: 2px solid #dfa67b;
+  width: 100%;
+  padding-left: 7px;
+}
+#inputRecipeName::placeholder {
+  font-size: 1rem;
+}
+#inputRecipeName:focus {
+  outline: none !important;
+  border: 2px solid #fa6c00;
+}
+.searchbar {
+  grid-column: 5 / 9;
+  display: flex;
+  align-items: center;
+}

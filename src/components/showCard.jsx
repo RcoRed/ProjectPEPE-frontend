@@ -1,11 +1,11 @@
-import '/src/components-style/card.css'
+import "/src/components-style/card.css";
 
 function ShowCard({ recipe }) {
-    return (
-        <div className="divImage">
-            <img src={recipe.imageFilePath}></img>
-            <h2 className='title-card'>{recipe.name}</h2>
-        </div>
-    );
+  return (
+    <>
+      <img src={recipe.imageFilePath} alt={recipe.name}></img>
+      <h2 className="title-card">{recipe.name}</h2>
+    </>
+  );
 }
 export default ShowCard;

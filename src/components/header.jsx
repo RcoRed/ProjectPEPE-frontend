@@ -1,16 +1,12 @@
-import { Link, NavLink, redirect, useNavigate } from "react-router-dom";
 import "/src/components-style/header.css";
-import Searchbar from "./searchBar";
 import logo from "/src/images/Logo.png";
+import { Link, NavLink } from "react-router-dom";
+import Searchbar from "./searchBar";
 
 function Header() {
-  const loadCards = () => {
-    redirect("appetizer");
-  };
-
   return (
     <header>
-      <div className="div1">
+      <div className="head">
         <div className="div-logo">
           <img src={logo} alt="logo"></img>
         </div>
@@ -29,22 +25,22 @@ function Header() {
             </NavLink>
           </li>
           <li>
-            <NavLink to={"appetizer"}>
+            <NavLink to={"appetizer?myDish=APPETIZER"}>
               <button className="menu-button">Antipasti</button>
             </NavLink>
           </li>
           <li>
-            <NavLink to={"first"}>
+            <NavLink to={"first?myDish=FIRST"}>
               <button className="menu-button">Primi</button>
             </NavLink>
           </li>
           <li>
-            <NavLink to={"second"}>
+            <NavLink to={"second?myDish=SECOND"}>
               <button className="menu-button">Secondi</button>
             </NavLink>
           </li>
           <li>
-            <NavLink to={"dessert"}>
+            <NavLink to={"dessert?myDish=DESSERT"}>
               <button className="menu-button">Dessert</button>
             </NavLink>
           </li>

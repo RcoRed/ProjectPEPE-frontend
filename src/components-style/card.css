@@ -1,24 +1,24 @@
-.divImage{
-    height: 300px;
-    width: 500px; 
-  }
+.div-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px;
+  width: 100vw;
+}
 
-  .div-cards{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 10px;
-    width: 100vw;
-  }
+.divImage {
+  height: 300px;
+  width: 500px;
+}
 
-  img{
-    height: 100%;
-    width: 100%;
-  }
+img {
+  height: 100%;
+  width: 100%;
+}
 
-  .title-card{
-    margin-top: -50px;
-    color: white;
-    font-size: 2rem;
-  }
+.title-card {
+  margin-top: -50px;
+  color: white;
+  font-size: 2rem;
+}

@@ -1,13 +1,15 @@
+import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
-import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import App from "./App";
+
 import LoginForm from "./components/login-form";
 import RegistrationForm from "./components/registration-form";
-import Cards, { loader as cardsLoader } from "./components/cards";
+import RecipesCards, {
+  loader as cardsLoader,
+} from "./components/recipes-cards";
 import ErrorPage from "./error-page";
-import RecipeRedirect from "./components/recipe-redirect";
 
 const router = createBrowserRouter([
   {
@@ -19,26 +21,18 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
         children: [
           {
+            //path default figlio di App
             index: true,
-            element: <Cards />,
+            element: <RecipesCards />,
+            //il loader verrà eseguito ogni volta che sarà fatto una richiesta con questo path
             loader: cardsLoader,
           },
           {
             path: "/:myDish",
-            element: <RecipeRedirect />,
+            element: <RecipesCards />,
+            //il loader verrà eseguito ogni volta che sarà fatto una richiesta con questo path
+            loader: cardsLoader,
           },
-          //{
-          //   path: "first",
-          //   element: <Cards />,
-          // },
-          // {
-          //   path: "second",
-          //   element: <Cards />,
-          // },
-          // {
-          //   path: "dessert",
-          //   element: <Cards />,
-          // },
         ],
       },
     ],

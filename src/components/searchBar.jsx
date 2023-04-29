@@ -1,10 +1,12 @@
-import { Form, redirect} from "react-router-dom";
+import { Form, redirect } from "react-router-dom";
 import "/src/components-style/searchbar.css";
 import { useState } from "react";
 
 export default function Searchbar() {
   const [namePart, setNamePart] = useState("");
+
   const loadCards = () => {
+    //semplice redirect che come parametri avrà quello del form inviato (method GET)
     redirect("/");
   };
 
@@ -15,8 +17,8 @@ export default function Searchbar() {
   return (
     <Form className="searchbar" role="search" onSubmit={loadCards}>
       <input
-        id="inputName"
-        name="inputName"
+        id="inputRecipeName"
+        name="inputRecipeName"
         defaultValue={namePart}
         type="search"
         placeholder="Cerca una ricetta..."
