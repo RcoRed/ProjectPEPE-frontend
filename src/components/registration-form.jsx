@@ -1,11 +1,11 @@
-import { Form, useNavigate } from "react-router-dom";
+import { Form, redirect, useNavigate } from "react-router-dom";
 import "/src/components-style/registration-form.css";
 import { ApiRegistration } from "../api";
 
 function RegistrationForm() {
   const navigate = useNavigate();
 
-  const sendRegistrationRequest = (event) => {
+  const sendRegistrationRequest = async(event) => {
     event.preventDefault();
     const person = {
       firstname: document.querySelector("#firstname").value,
@@ -20,8 +20,9 @@ function RegistrationForm() {
       email: document.querySelector("#email").value,
       password: document.querySelector("#password").value,
     };
-    ApiRegistration(person);
-    navigate("/");
+    const data = await ApiRegistration(person);
+    console.log(data);
+    navigate("/" , {state:{firstname:person.firstname, lastname:person.lastname, accessToken:data.accessToken, refreshToken:data.refreshToken}} );
   };
 
   return (
