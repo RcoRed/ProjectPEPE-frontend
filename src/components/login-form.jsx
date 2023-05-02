@@ -1,9 +1,24 @@
-import { Link } from "react-router-dom";
+import { Form, Link, useNavigate } from "react-router-dom";
 import "/src/components-style/login-form.css";
+import { ApiLogin } from "../api";
 function LoginForm() {
+  
+  const navigate= useNavigate();
+
+  const sendLoginRequest = async(event) => {
+    event.preventDefault();
+    const personLogin = {
+      email: document.querySelector("#email").value,
+      password: document.querySelector("#password").value,
+    };
+    const data = await ApiLogin(personLogin);
+    console.log(data);
+    navigate("/" , {state:{firstname:data.person.firstname, lastname:data.person.lastname, accessToken:data.accessToken, refreshToken:data.refreshToken}} );
+  };
+
   return (
     <div className="container">
-      <form method="GET" className="login-form">
+      <Form method="POST" className="login-form" onSubmit={sendLoginRequest}>
         <div className="input-div">
           <label htmlFor="email">Email</label>
           <input
@@ -29,7 +44,7 @@ function LoginForm() {
             Accedi
           </button>
         </div>
-      </form>
+      </Form>
       <div className="registration-link">
         <Link to={"/register"}>Se non hai un account registrati </Link>
       </div>

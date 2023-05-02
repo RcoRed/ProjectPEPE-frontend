@@ -21,7 +21,7 @@ export async function ApiRegistration(person) {
   console.log(person);
   console.log(person.email);
   console.log("person.email");
-  let result = await axios
+  const {data} = await axios
     .post(`http://localhost:8080/api/v1/auth/register`, {
       email: person.email,
       password: person.password,
@@ -35,7 +35,18 @@ export async function ApiRegistration(person) {
       diet: person.diet,
       physicalActivity: person.physicalActivity,
     });
-  console.log(result);
+  console.log(data);
+  return data;
+}
+export async function ApiLogin(personLogin){
+  console.log("attendi risultato di...");
+  const {data} = await axios.post(`http://localhost:8080/api/v1/auth/authenticate`, {
+    email: personLogin.email,
+    password: personLogin.password,
+  });
+  console.log(data);
+  return data;
+
 }
 
 export async function ApiFullRecipe({ myId }){
