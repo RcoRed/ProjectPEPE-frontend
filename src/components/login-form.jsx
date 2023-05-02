@@ -13,7 +13,7 @@ function LoginForm() {
     };
     const data = await ApiLogin(personLogin);
     console.log(data);
-    navigate("/" , {state:{firstname:"person.firstname", lastname:"person.lastname", accessToken:data.accessToken, refreshToken:data.refreshToken}} );
+    navigate("/" , {state:{firstname:data.person.firstname, lastname:data.person.lastname, accessToken:data.accessToken, refreshToken:data.refreshToken}} );
   };
 
   return (

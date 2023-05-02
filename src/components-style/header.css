@@ -18,6 +18,7 @@ header {
   font-size: larger;
 }
 .divBenvenuto strong{
+  text-transform: capitalize;
   font-weight: bolder;
 
 
