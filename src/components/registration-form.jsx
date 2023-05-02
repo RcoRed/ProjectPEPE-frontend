@@ -1,9 +1,12 @@
-import { redirect } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import "/src/components-style/registration-form.css";
 import { ApiRegistration } from "../api";
 
 function RegistrationForm() {
-  const sendRegistrationRequest = () => {
+  const navigate = useNavigate();
+
+  const sendRegistrationRequest = (event) => {
+    event.preventDefault();
     const person = {
       firstname: document.querySelector("#firstname").value,
       lastname: document.querySelector("#lastname").value,
@@ -18,14 +21,14 @@ function RegistrationForm() {
       password: document.querySelector("#password").value,
     };
     ApiRegistration(person);
-    redirect("/");
+    navigate("/");
   };
 
   return (
     <div className="registration-container">
-      <form
+      <Form
         method="POST"
-        action={sendRegistrationRequest}
+        onSubmit={sendRegistrationRequest}
         className="registration-form"
       >
         <div className="separator">
@@ -145,7 +148,7 @@ function RegistrationForm() {
             Registrati
           </button>
         </div>
-      </form>
+      </Form>
     </div>
   );
 }
