@@ -25,6 +25,8 @@ function RegistrationForm() {
     navigate("/" , {state:{firstname:person.firstname, lastname:person.lastname, accessToken:data.accessToken, refreshToken:data.refreshToken}} );
   };
 
+  
+
   return (
     <div className="registration-container">
       <Form

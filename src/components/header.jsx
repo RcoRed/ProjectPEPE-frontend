@@ -11,7 +11,7 @@ function Header({ state }) {
           <img src={logo} alt="logo"></img>
         </div>
         <Searchbar />
-        {state ? (<p>ciao {state.fristname} {state.lastname} </p>) : (<div className="div-button">
+        {state ? (<div className="divBenvenuto"><p>Benvenuto</p> <strong>{state.firstname} {state.lastname}</strong></div>) : (<div className="div-button">
           <Link to={"/login"}>
             <button className="button">Accedi/Registrati</button>
           </Link>

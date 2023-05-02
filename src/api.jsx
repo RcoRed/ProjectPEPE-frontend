@@ -38,3 +38,13 @@ export async function ApiRegistration(person) {
   console.log(data);
   return data;
 }
+export async function ApiLogin(personLogin){
+  console.log("attendi risultato di...");
+  const {data} = await axios.post(`http://localhost:8080/api/v1/auth/authenticate`, {
+    email: personLogin.email,
+    password: personLogin.password,
+  });
+  console.log(data);
+  return data;
+
+}
