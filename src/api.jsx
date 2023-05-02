@@ -37,3 +37,10 @@ export async function ApiRegistration(person) {
     });
   console.log(result);
 }
+
+export async function ApiFullRecipe({ myId }){
+  let result = await axios.get(`http://localhost:8080/api/recipe/${myId}`);
+  console.log(myId);
+  console.log(result);
+  return result.data;
+}

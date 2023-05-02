@@ -1,7 +1,8 @@
 import "/src/components-style/card.css";
 import ShowCard from "./showCard";
 import ApiRecipe from "../api";
-import { useLoaderData } from "react-router-dom";
+import { ApiFullRecipe } from "../api";
+import { Link, redirect, useLoaderData, useNavigate } from "react-router-dom";
 
 export async function loader({ request }) {
   //leggo la richesta fatta da nostro router
@@ -19,11 +20,17 @@ export default function RecipesCards() {
   //leggo il risultato ritornato dal loader
   const { recipes } = useLoaderData();
 
+  const navigate = useNavigate();     
+
   const renderedCard = recipes.map((recipe) => {
+    const handleClick = () => {
+      console.log("handle click");
+      navigate("/recipe", {od: recipe.id});
+    }
     return (
-      <div className="divImage" key={recipe.id}>
+      <Link className="divImage" key={recipe.id} to={`/recipe?od=${recipe.id}`}>
         <ShowCard recipe={recipe} />
-      </div>
+      </Link>
     );
   });
 

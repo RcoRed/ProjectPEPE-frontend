@@ -10,6 +10,7 @@ import RecipesCards, {
   loader as cardsLoader,
 } from "./components/recipes-cards";
 import ErrorPage from "./error-page";
+import FullRecipe, { loader as fullLoader } from "./components/full-recipe";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
             //il loader verrà eseguito ogni volta che sarà fatto una richiesta con questo path
             loader: cardsLoader,
           },
+          {
+            path: "/recipe",
+            element: <FullRecipe/>,
+            loader: fullLoader,
+          }
         ],
       },
     ],
