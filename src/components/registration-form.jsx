@@ -1,9 +1,33 @@
+import { redirect } from "react-router-dom";
 import "/src/components-style/registration-form.css";
+import { ApiRegistration } from "../api";
 
 function RegistrationForm() {
+  const sendRegistrationRequest = () => {
+    const person = {
+      firstname: document.querySelector("#firstname").value,
+      lastname: document.querySelector("#lastname").value,
+      dob: document.querySelector("#dob").value,
+      sex: document.querySelector("#sex").value,
+      height: document.querySelector("#height").value,
+      weight: document.querySelector("#weight").value,
+      work: document.querySelector("#work").value,
+      diet: document.querySelector("#diet").value,
+      physicalActivity: document.querySelector("#physical-activity").value,
+      email: document.querySelector("#email").value,
+      password: document.querySelector("#password").value,
+    };
+    ApiRegistration(person);
+    redirect("/");
+  };
+
   return (
     <div className="registration-container">
-      <form method="POST" className="registration-form">
+      <form
+        method="POST"
+        action={sendRegistrationRequest}
+        className="registration-form"
+      >
         <div className="separator">
           <div className="registration-input-div">
             <label htmlFor="firstname">Nome</label>
@@ -39,9 +63,9 @@ function RegistrationForm() {
           <div className="registration-input-div center-div">
             <label htmlFor="sex">Sesso</label>
             <select name="sex" id="sex">
-              <option value="m">Uomo</option>
-              <option value="f">Donna</option>
-              <option value="u">Altro</option>
+              <option value="MALE">Uomo</option>
+              <option value="FEMALE">Donna</option>
+              <option value="UNDEFINED">Altro</option>
             </select>
           </div>
         </div>
@@ -74,25 +98,25 @@ function RegistrationForm() {
           <div className="registration-input-div center-div">
             <label htmlFor="work">Tipo di Lavoro</label>
             <select name="work" id="work">
-              <option value="s">Sedentario</option>
-              <option value="a">Attivo</option>
-              <option value="va">Molto Attivo</option>
+              <option value="SEDENTARY">Sedentario</option>
+              <option value="ACTIVE">Attivo</option>
+              <option value="VERY_ACTIVE">Molto Attivo</option>
             </select>
           </div>
           <div className="registration-input-div center-div">
             <label htmlFor="diet">Dieta</label>
             <select name="diet" id="diet">
-              <option value="t">Tutto</option>
-              <option value="v">Vegetariana</option>
-              <option value="veg">Vegana</option>
+              <option value="OMNIVOROUS">Tutto</option>
+              <option value="VEGETARIAN">Vegetariana</option>
+              <option value="VEGAN">Vegana</option>
             </select>
           </div>
           <div className="registration-input-div center-div">
             <label htmlFor="physical-activity">Attività Fisica</label>
             <select name="physical-activity" id="physical-activity">
-              <option value="l">Poca</option>
-              <option value="n">Media</option>
-              <option value="h">Molta</option>
+              <option value="LOW">Poca</option>
+              <option value="NORMAL">Media</option>
+              <option value="HIGH">Molta</option>
             </select>
           </div>
         </div>
