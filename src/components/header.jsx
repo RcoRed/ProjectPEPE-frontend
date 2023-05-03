@@ -3,7 +3,7 @@ import logo from "/src/images/Logo.png";
 import { Link, NavLink } from "react-router-dom";
 import Searchbar from "./searchBar";
 
-function Header({ state }) {
+function Header({ user }) {
   return (
     <header>
       <div className="head">
@@ -11,7 +11,7 @@ function Header({ state }) {
           <img src={logo} alt="logo"></img>
         </div>
         <Searchbar />
-        {state ? (<div className="divBenvenuto"><p>Benvenuto</p> <strong>{state.firstname} {state.lastname}</strong></div>) : (<div className="div-button">
+        {user ? (<div className="divBenvenuto"><p>Benvenuto</p> <Link> <strong>{user.firstname} {user.lastname}</strong></Link></div>) : (<div className="div-button">
           <Link to={"/login"}>
             <button className="button">Accedi/Registrati</button>
           </Link>
