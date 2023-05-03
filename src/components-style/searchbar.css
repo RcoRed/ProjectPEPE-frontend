@@ -12,6 +12,9 @@
   outline: none !important;
   border: 2px solid #fa6c00;
 }
+#inputRecipeName::-webkit-search-cancel-button {
+  -webkit-appearance:none;
+}
 .searchbar {
   grid-column: 5 / 9;
   display: flex;

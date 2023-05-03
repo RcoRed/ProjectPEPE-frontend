@@ -16,11 +16,7 @@ export default async function ApiRecipe({ myDish = null, namePart = null }) {
 }
 
 export async function ApiRegistration(person) {
-  console.log("person.email");
   console.log("attendi risposta per...");
-  console.log(person);
-  console.log(person.email);
-  console.log("person.email");
   const {data} = await axios
     .post(`http://localhost:8080/api/v1/auth/register`, {
       email: person.email,

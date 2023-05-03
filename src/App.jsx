@@ -4,14 +4,13 @@ import Header from "./components/header";
 import { useState } from "react";
 
 export default function App() {
-
-  const {state} = useLocation();
-  const [user,setUser] = useState(state);
+  const { state } = useLocation();
+  const [user, setUser] = useState(state);
 
   console.log(state);
   return (
     <div className="App">
-      <Header user={user} /> 
+      <Header user={user} />
       <main>
         <Outlet />
       </main>

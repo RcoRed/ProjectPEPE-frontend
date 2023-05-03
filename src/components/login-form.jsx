@@ -2,10 +2,9 @@ import { Form, Link, useNavigate } from "react-router-dom";
 import "/src/components-style/login-form.css";
 import { ApiLogin } from "../api";
 function LoginForm() {
-  
-  const navigate= useNavigate();
+  const navigate = useNavigate();
 
-  const sendLoginRequest = async(event) => {
+  const sendLoginRequest = async (event) => {
     event.preventDefault();
     const personLogin = {
       email: document.querySelector("#email").value,
@@ -13,7 +12,7 @@ function LoginForm() {
     };
     const data = await ApiLogin(personLogin);
     console.log(data);
-    navigate("/" , {state:{firstname:data.person.firstname, lastname:data.person.lastname, accessToken:data.accessToken, refreshToken:data.refreshToken}} );
+    navigate("/", { state: data });
   };
 
   return (

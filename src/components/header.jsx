@@ -16,7 +16,7 @@ function Header({ user }) {
             <p>Benvenuto</p>
             <Link>
               <strong>
-                {user.firstname} {user.lastname}
+                {user.person.firstname} {user.person.lastname}
               </strong>
             </Link>
           </div>
