@@ -11,12 +11,22 @@ function Header({ user }) {
           <img src={logo} alt="logo"></img>
         </div>
         <Searchbar />
-        {user ? (<div className="divBenvenuto"><p>Benvenuto</p> <Link> <strong>{user.firstname} {user.lastname}</strong></Link></div>) : (<div className="div-button">
-          <Link to={"/login"}>
-            <button className="button">Accedi/Registrati</button>
-          </Link>
-        </div>)}
-
+        {user ? (
+          <div className="divBenvenuto">
+            <p>Benvenuto</p>
+            <Link>
+              <strong>
+                {user.firstname} {user.lastname}
+              </strong>
+            </Link>
+          </div>
+        ) : (
+          <div className="div-button">
+            <Link to={"/login"}>
+              <button className="button">Accedi/Registrati</button>
+            </Link>
+          </div>
+        )}
       </div>
       <nav>
         <ul className="menu">
