@@ -1,18 +1,19 @@
 import "/src/components-style/card.css";
 import ShowCard from "./showCard";
 import ApiRecipe from "../api";
-import { ApiFullRecipe } from "../api";
-import { Link, redirect, useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 
 export async function loader({ request }) {
+  const myNPage = 0;
+  const myNRecipes = 9;
   //leggo la richesta fatta da nostro router
   const url = new URL(request.url);
   console.log(url);
   //leggo i parametri passati dalla richiesta/url
-  let namePart = url.searchParams.get("inputRecipeName");
-  let myDish = url.searchParams.get("myDish");
+  const namePart = url.searchParams.get("inputRecipeName");
+  const myDish = url.searchParams.get("myDish");
   //se i parametri letti non sono presenti nell'url saranno undefined(controllo poi fatto nel component api)
-  const recipes = await ApiRecipe({ myDish, namePart });
+  const recipes = await ApiRecipe({ myDish, namePart, myNPage, myNRecipes });
   return { recipes };
 }
 
@@ -20,7 +21,7 @@ export default function RecipesCards() {
   //leggo il risultato ritornato dal loader
   const { recipes } = useLoaderData();
 
-  const navigate = useNavigate();     
+  const navigate = useNavigate();
 
   const renderedCard = recipes.map((recipe) => {
     const handleClick = () => {
