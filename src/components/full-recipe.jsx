@@ -49,6 +49,14 @@ export default function FullRecipe() {
           </div>
         </section>
       </div>
+      <div className="wrapper">
+        <div>
+          <h2 className="ingredient-title">Ingredienti</h2>
+        </div>        
+        <div className="ingredients-div">
+          {recipe.ingredients.map((ingredient, index) => <p key={index} className="ingredient">{ingredient}</p>)}
+        </div>
+      </div>      
       <section className="section-description">
         <div>
             <h3 className="preparation-h3">Preparazione:</h3>
