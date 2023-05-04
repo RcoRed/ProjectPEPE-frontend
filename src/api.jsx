@@ -12,7 +12,7 @@ export default async function ApiRecipe({ myDish = null, namePart = null }) {
     },
   });
   console.log(result);
-  return result.data;
+  return result.data; //////
 }
 
 export async function ApiRegistration(person) {
