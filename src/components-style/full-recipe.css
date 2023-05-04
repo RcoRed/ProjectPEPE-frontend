@@ -23,6 +23,8 @@
 .div-image{
     height: 500px;
     width: 800px;
+    box-shadow: -16px 17px 0px -2px #d56b1a;
+    border-radius: 10px;
 }
 
 .div-image img{
@@ -53,7 +55,7 @@
 .ingredients-div{
     padding: 50px;
     font-size: 1.5rem;
-    border: 3px dotted #d56b1a;;
+    border: 3px dotted #d56b1a;
     margin-top: 10px;
     width: 30%;
     text-align: center;
