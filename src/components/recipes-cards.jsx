@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 export async function loader({ request }) {
+  const myNPage = 0;
+  const myNRecipes = 9;
   //leggo la richesta fatta da nostro router
   const url = new URL(request.url);
   console.log(url);
@@ -29,6 +31,7 @@ export default function RecipesCards({ request }) {
   //leggo il risultato ritornato dal loader
   const searchParams = useLoaderData();
 
+  const navigate = useNavigate();
   const [params, setParams] = useState(searchParams);
   const [recipes, setRecipes] = useState([]);
 
@@ -43,7 +46,7 @@ export default function RecipesCards({ request }) {
     }
   }
 
-  const navigate = useNavigate();     
+  const navigate = useNavigate();
 
   const renderedCard = recipes.map((recipe) => {
     const handleClick = () => {
