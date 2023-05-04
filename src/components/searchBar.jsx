@@ -2,7 +2,7 @@ import { Form, redirect } from "react-router-dom";
 import "/src/components-style/searchbar.css";
 import { useState } from "react";
 
-export default function Searchbar() {
+export default function Searchbar({ user }) {
   const [namePart, setNamePart] = useState("");
 
   const loadCards = () => {
@@ -25,6 +25,46 @@ export default function Searchbar() {
         aria-label="Search recipes"
         onChange={handleChange}
       />
+      {user ? (
+        <>
+          <div className="div-wrap-filter auth">
+            <label className="label-filter" htmlFor="can-cook">Filtro personale</label>
+            <select className="filter-select select-auth" name="can-cook">
+              <option value="">Nessuno</option>
+              <option value="can-cook">Cosa posso cucinare</option>
+              <option value="avoiding-food">In base ai gusti</option>
+            </select>
+          </div>
+        </>
+        ) : (
+          <div></div>
+        )}
+      <div className="div-filters">
+        <div className="div-wrap-filter">
+          <label className="label-filter" htmlFor="diet">Dieta</label>
+          <select className="filter-select" name="diet">
+            <option value="VEGAN">Vegana</option>
+            <option value="VEGETARIAN">Vegetariana</option>
+            <option value="OMNIVOROUS">Onnivora</option>
+          </select>
+        </div>
+        <div className="div-wrap-filter">
+          <label className="label-filter" htmlFor="difficulty">Difficoltà</label>
+          <select className="filter-select" name="difficulty">
+            <option value="LOW">Bassa</option>
+            <option value="MEDIUM">Media</option>
+            <option value="HIGH">Alta</option>
+          </select>
+        </div>
+        <div className="div-wrap-filter">
+          <label className="label-filter" htmlFor="to-cook">Da cucinare?</label>
+          <select className="filter-select" name="to-cook">
+            <option value="">Misto</option>
+            <option value="true">Sì</option>
+            <option value="false">No</option>
+          </select>
+        </div>
+      </div>
     </Form>
   );
 }
