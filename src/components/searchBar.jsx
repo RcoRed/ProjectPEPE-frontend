@@ -1,6 +1,10 @@
-import { Form, redirect } from "react-router-dom";
+import { Form, redirect, useSubmit } from "react-router-dom";
 import "/src/components-style/searchbar.css";
 import { useState } from "react";
+
+function action(){
+  redirect("/");
+}
 
 export default function Searchbar({ user }) {
   const [namePart, setNamePart] = useState("");
@@ -9,6 +13,8 @@ export default function Searchbar({ user }) {
     //semplice redirect che come parametri avrà quello del form inviato (method GET)
     redirect("/");
   };
+
+  const submit = useSubmit();
 
   const handleChange = (event) => {
     setNamePart(event.target.value);
@@ -28,11 +34,13 @@ export default function Searchbar({ user }) {
       {user ? (
         <>
           <div className="div-wrap-filter auth">
-            <label className="label-filter" htmlFor="can-cook">Filtro personale</label>
-            <select className="filter-select select-auth" name="can-cook">
+            <label className="label-filter" htmlFor="personal-filter">Filtro personale</label>
+            <select className="filter-select select-auth" name="personal-filter" onChange={(event) => {
+              submit(event.currentTarget.form);
+            }}>
               <option value="">Nessuno</option>
               <option value="can-cook">Cosa posso cucinare</option>
-              <option value="avoiding-food">In base ai gusti</option>
+              <option value={user.id}>In base ai gusti</option>
             </select>
           </div>
         </>
@@ -42,15 +50,20 @@ export default function Searchbar({ user }) {
       <div className="div-filters">
         <div className="div-wrap-filter">
           <label className="label-filter" htmlFor="diet">Dieta</label>
-          <select className="filter-select" name="diet">
-            <option value="VEGAN">Vegana</option>
+          <select className="filter-select" name="diet" onChange={(event) => {
+              submit(event.currentTarget.form);
+            }}>
+            <option value="">Tutti</option>
             <option value="VEGETARIAN">Vegetariana</option>
-            <option value="OMNIVOROUS">Onnivora</option>
+            <option value="VEGAN">Vegana</option>
           </select>
         </div>
         <div className="div-wrap-filter">
           <label className="label-filter" htmlFor="difficulty">Difficoltà</label>
-          <select className="filter-select" name="difficulty">
+          <select className="filter-select" name="difficulty" onChange={(event) => {
+              submit(event.currentTarget.form);
+            }}>
+            <option value="">Tutti</option>
             <option value="LOW">Bassa</option>
             <option value="MEDIUM">Media</option>
             <option value="HIGH">Alta</option>
@@ -58,8 +71,10 @@ export default function Searchbar({ user }) {
         </div>
         <div className="div-wrap-filter">
           <label className="label-filter" htmlFor="to-cook">Da cucinare?</label>
-          <select className="filter-select" name="to-cook">
-            <option value="">Misto</option>
+          <select className="filter-select" name="to-cook" onChange={(event) => {
+              submit(event.currentTarget.form);
+            }}>
+            <option value="">Tutti</option>
             <option value="true">Sì</option>
             <option value="false">No</option>
           </select>

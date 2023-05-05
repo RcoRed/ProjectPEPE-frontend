@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //se arriveranno valori undefined allora il loro default sarà null (cioè cio che vogliamo)
-export default async function ApiRecipe({ myDish = null, namePart = null, myNPage = null, myNRecipes = null }) {
+export default async function ApiRecipe({ myDish = null, namePart = null, myDiet = null, myDifficulty = null, myToCook = null }) {
   console.log("attendi risposta per...");
   console.log(namePart);
   console.log(myDish);
@@ -9,12 +9,10 @@ export default async function ApiRecipe({ myDish = null, namePart = null, myNPag
     params: {
       dish: myDish,
       recipeName: namePart,
-      nPage: myNPage,
-      nRecipes: myNRecipes,
     },
   });
   console.log(result);
-  return result.data; //////
+  return result.data;
 }
 
 export async function ApiRegistration(person) {
@@ -37,7 +35,7 @@ export async function ApiRegistration(person) {
   );
   console.log(data);
   localStorage.setItem("token", data.accessToken);
-  return data;
+  return data.person;
 }
 
 export async function ApiLogin(personLogin) {
@@ -51,7 +49,7 @@ export async function ApiLogin(personLogin) {
   );
   console.log(data);
   localStorage.setItem("token", data.accessToken);
-  return data;
+  return data.person;
 }
 
 export async function ApiFullRecipe({ myId }) {
@@ -69,5 +67,24 @@ export async function GetPerson({ userId }) {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     }
   );
+  return result.data;
+}
+
+export async function ApiRecipeAuth({ myDish = null, namePart = null, myDiet = null, myDifficulty = null, myToCook = null, myId = null }) {
+  console.log("attendi risposta per...");
+  console.log(namePart);
+  console.log(myDish);
+  let result = await axios.get(`http://localhost:8080/api/v1/recipeauth`, {
+    params: {
+      dish: myDish,
+      recipeName: namePart,
+      diet: myDiet,
+      difficulty: myDifficulty,
+      toCook: myToCook,
+      idPerson: myId,
+    },
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  });
+  console.log(result);
   return result.data;
 }

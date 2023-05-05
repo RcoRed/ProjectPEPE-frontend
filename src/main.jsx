@@ -12,9 +12,11 @@ import RecipesCards, {
 import ErrorPage from "./error-page";
 import FullRecipe, { loader as fullLoader } from "./components/full-recipe";
 import UserPage from "./components/user-page";
-import PersonalInfo, { loader as personalInfoLoader } from "./components/personal-info";
+import PersonalInfo from "./components/personal-info";
 import TasteComponent, { loader as tasteComponentLoader } from "./components/taste-component";
 import FoodStorage, { loader as foodStorageLoader } from "./components/food-storage";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 const router = createBrowserRouter([
   {
@@ -67,7 +69,6 @@ const router = createBrowserRouter([
             index: true,
             element: <PersonalInfo/>,
             //il loader verrà eseguito ogni volta che sarà fatto una richiesta con questo path
-            loader: personalInfoLoader,
           },
           {
             path: "/user/taste-manager",
@@ -87,7 +88,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <Provider store={store}>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  </Provider>
 );
