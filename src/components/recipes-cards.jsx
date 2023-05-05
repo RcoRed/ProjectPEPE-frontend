@@ -21,11 +21,10 @@ export async function loader({ request }) {
   return { myDish, namePart, myToCook, myDifficulty, myDiet, myId };
 }
 
-export default function RecipesCards({ request }) {
-  console.log("RRRRRRRRRRRRRRRRRR" + request);
+export default function RecipesCards() {
   const { user } = useSelector((state) => {
-    return { user: state.user.myUser }
-  })
+    return { user: state.user.myUser };
+  });
   //leggo il risultato ritornato dal loader
   const searchParams = useLoaderData();
 
@@ -33,41 +32,22 @@ export default function RecipesCards({ request }) {
   const [params, setParams] = useState(searchParams);
   const [recipes, setRecipes] = useState([]);
 
-  useEffect(() => {searchRecipe()}, [params]);
+  useEffect(() => {
+    searchRecipe();
+  }, [params]);
 
-  async function searchRecipe(){
-    if(user){
-      console.log("CIAO IUSER, SI, MI HAI SCOPERT. MA CHI TE L'HA DETTO?!?!?!?!" + user.id);
-        setRecipes(await ApiRecipeAuth(params));
-    } else{
-        setRecipes(await ApiRecipe(params));
+  async function searchRecipe() {
+    if (user) {
+      console.log(
+        "CIAO IUSER, SI, MI HAI SCOPERT. MA CHI TE L'HA DETTO?!?!?!?!" + user.id
+      );
+      setRecipes(await ApiRecipeAuth(params));
+    } else {
+      setRecipes(await ApiRecipe(params));
     }
   }
-
-  const navigate = useNavigate();
-  const [params, setParams] = useState(searchParams);
-  const [recipes, setRecipes] = useState([]);
-
-  useEffect(() => {searchRecipe()}, [params]);
-
-  async function searchRecipe(){
-    if(user){
-      console.log("CIAO IUSER, SI, MI HAI SCOPERT. MA CHI TE L'HA DETTO?!?!?!?!" + user.id);
-        setRecipes(await ApiRecipeAuth(params));
-    } else{
-        setRecipes(await ApiRecipe(params));
-    }
-  }
-
-  const navigate = useNavigate();
-  const navigate = useNavigate();
-  const navigate = useNavigate();
 
   const renderedCard = recipes.map((recipe) => {
-    const handleClick = () => {
-      console.log("handle click");
-      navigate("/recipe", {od: recipe.id});
-    }
     return (
       <Link className="divImage" key={recipe.id} to={`/recipe?od=${recipe.id}`}>
         <ShowCard recipe={recipe} />
