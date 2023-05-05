@@ -77,6 +77,7 @@ header {
   text-decoration: none;
   display: block;
 }
+
 .menu-button {
   background-color: transparent;
   width: 100%;
@@ -86,11 +87,13 @@ header {
   border: none;
   transition: 0.2s ease-in-out;
 }
+
 .menu-button:hover {
   background-color: #fff2cc;
   cursor: pointer;
 }
-nav {
+
+header nav {
   margin-top: 10px;
   background-color: #ffd966;
   width: 100%;

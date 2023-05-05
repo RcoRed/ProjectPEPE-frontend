@@ -1,20 +1,25 @@
 import "/src/components-style/header.css";
 import logo from "/src/images/Logo.png";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Searchbar from "./searchBar";
 
 function Header({ user }) {
+  const navigate = useNavigate();
+  const toUser = () => {
+    navigate("/user", {state: user});
+  }
+  console.log(user);
   return (
     <header>
       <div className="head">
         <div className="div-logo">
           <img src={logo} alt="logo"></img>
         </div>
-        <Searchbar />
+        <Searchbar user={user}/>
         {user ? (
           <div className="divBenvenuto">
             <p>Benvenuto</p>
-            <Link>
+            <Link to={`/user?id=${user.person.id}`}>
               <strong>
                 {user.person.firstname} {user.person.lastname}
               </strong>
