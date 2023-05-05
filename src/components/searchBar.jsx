@@ -3,6 +3,7 @@ import "/src/components-style/searchbar.css";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
+//non aggiorno lo stato del redux perche si occuperà il loader di leggere la ricerca
 export default function Searchbar() {
   const [namePart, setNamePart] = useState("");
   const submit = useSubmit();
@@ -30,7 +31,7 @@ export default function Searchbar() {
       <input
         id="inputRecipeName"
         name="inputRecipeName"
-        defaultValue={namePart}
+        defaultValue={handleChange}
         type="search"
         placeholder="Cerca una ricetta..."
         aria-label="Search recipes"

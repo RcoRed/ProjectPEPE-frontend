@@ -1,13 +1,10 @@
 import axios from "axios";
 
 //se arriveranno valori undefined allora il loro default sarà null (cioè cio che vogliamo)
-export default async function ApiRecipe({
-  myDish = null,
-  namePart = null,
-  myDiet = null,
-  myDifficulty = null,
-  myToCook = null,
-}) {
+export default async function ApiRecipe(
+  { namePart = null, myDiet = null, myDifficulty = null, myToCook = null },
+  myDish = null
+) {
   console.log("attendi risposta per...");
   let result = await axios.get(`http://localhost:8080/api/recipe`, {
     params: {
@@ -22,15 +19,17 @@ export default async function ApiRecipe({
   return result.data;
 }
 
-export async function ApiRecipeAuth({
-  myDish = null,
-  namePart = null,
-  myDiet = null,
-  myDifficulty = null,
-  myToCook = null,
-  myIdPerson = null,
-}) {
-  console.log("attendi risposta per...");
+export async function ApiRecipeAuth(
+  {
+    namePart = null,
+    myDiet = null,
+    myDifficulty = null,
+    myToCook = null,
+    myIdPerson = null,
+  },
+  myDish = null
+) {
+  console.log("attendi risposta per... auth");
   let result = await axios.get(`http://localhost:8080/api/v1/recipeauth`, {
     params: {
       dish: myDish,

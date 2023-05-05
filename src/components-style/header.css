@@ -92,6 +92,10 @@ header {
   background-color: #fff2cc;
   cursor: pointer;
 }
+.active {
+  box-shadow: 0px 5px 3px -3px #d56b1a;
+
+}
 
 header nav {
   margin-top: 10px;
