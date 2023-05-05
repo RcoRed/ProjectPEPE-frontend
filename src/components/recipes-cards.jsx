@@ -8,6 +8,10 @@ import { useSelector } from "react-redux";
 export async function loader({ request }) {
   const myNPage = 0;
   const myNRecipes = 9;
+  const myNPage = 0;
+  const myNRecipes = 9;
+  const myNPage = 0;
+  const myNRecipes = 9;
   //leggo la richesta fatta da nostro router
   const url = new URL(request.url);
   console.log(url);
@@ -46,6 +50,23 @@ export default function RecipesCards({ request }) {
     }
   }
 
+  const navigate = useNavigate();
+  const [params, setParams] = useState(searchParams);
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {searchRecipe()}, [params]);
+
+  async function searchRecipe(){
+    if(user){
+      console.log("CIAO IUSER, SI, MI HAI SCOPERT. MA CHI TE L'HA DETTO?!?!?!?!" + user.id);
+        setRecipes(await ApiRecipeAuth(params));
+    } else{
+        setRecipes(await ApiRecipe(params));
+    }
+  }
+
+  const navigate = useNavigate();
+  const navigate = useNavigate();
   const navigate = useNavigate();
 
   const renderedCard = recipes.map((recipe) => {
