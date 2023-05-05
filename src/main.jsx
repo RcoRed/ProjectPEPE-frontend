@@ -11,6 +11,10 @@ import RecipesCards, {
 } from "./components/recipes-cards";
 import ErrorPage from "./error-page";
 import FullRecipe, { loader as fullLoader } from "./components/full-recipe";
+import UserPage from "./components/user-page";
+import PersonalInfo, { loader as personalInfoLoader } from "./components/personal-info";
+import TasteComponent, { loader as tasteComponentLoader } from "./components/taste-component";
+import FoodStorage, { loader as foodStorageLoader } from "./components/food-storage";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +55,35 @@ const router = createBrowserRouter([
     path: "/register",
     element: <RegistrationForm />,
   },
+  {
+    path: "/user",
+    element: <UserPage />,
+    children: [
+      {
+        errorElement: <ErrorPage />,
+        children: [
+          {
+            //path default figlio di App
+            index: true,
+            element: <PersonalInfo/>,
+            //il loader verrà eseguito ogni volta che sarà fatto una richiesta con questo path
+            loader: personalInfoLoader,
+          },
+          {
+            path: "/user/taste-manager",
+            element: <TasteComponent />,
+            //il loader verrà eseguito ogni volta che sarà fatto una richiesta con questo path
+            loader: tasteComponentLoader,
+          },
+          {
+            path: "/user/food-storage",
+            element: <FoodStorage/>,
+            loader: foodStorageLoader,
+          }
+        ],
+      },
+    ],
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

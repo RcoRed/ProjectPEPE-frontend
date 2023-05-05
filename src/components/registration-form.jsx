@@ -5,7 +5,7 @@ import { ApiRegistration } from "../api";
 function RegistrationForm() {
   const navigate = useNavigate();
 
-  const sendRegistrationRequest = async(event) => {
+  const sendRegistrationRequest = async (event) => {
     event.preventDefault();
     const person = {
       firstname: document.querySelector("#firstname").value,
@@ -22,10 +22,8 @@ function RegistrationForm() {
     };
     const data = await ApiRegistration(person);
     console.log(data);
-    navigate("/" , {state:{firstname:person.firstname, lastname:person.lastname, accessToken:data.accessToken, refreshToken:data.refreshToken}} );
+    navigate("/", { state: data });
   };
-
-  
 
   return (
     <div className="registration-container">

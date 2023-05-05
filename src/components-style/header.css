@@ -4,7 +4,8 @@ header {
   align-items: center;
 }
 
-.div-button, .divBenvenuto{
+.div-button,
+.divBenvenuto {
   grid-column: 10 / 12;
   display: flex;
   align-items: center;
@@ -14,14 +15,21 @@ header {
   flex-direction: column;
   align-items: start;
 }
-.divBenvenuto p{
+.divBenvenuto p {
   font-size: larger;
 }
-.divBenvenuto strong{
+.divBenvenuto a {
+  text-decoration: none;
+}
+.divBenvenuto strong {
+  color: #d56b1a;
   text-transform: capitalize;
   font-weight: bolder;
-
-
+  font-size: x-large;
+}
+.divBenvenuto strong:hover {
+  color: #ee9652;
+  cursor: pointer;
 }
 .button {
   border-radius: 10px;
@@ -40,7 +48,7 @@ header {
   color: #ffffff;
 }
 
-.div-logo{
+.div-logo {
   max-width: 100px;
   object-fit: contain;
   grid-column: 2 / 3;
@@ -67,25 +75,28 @@ header {
 .menu a {
   color: black;
   text-decoration: none;
+  display: block;
 }
+
 .menu-button {
   background-color: transparent;
-  width: 70%;
+  width: 100%;
   padding: 15px;
   font-weight: 600;
   font-size: 1.2rem;
   border: none;
   transition: 0.2s ease-in-out;
 }
+
 .menu-button:hover {
   background-color: #fff2cc;
   cursor: pointer;
 }
-nav {
+
+header nav {
   margin-top: 10px;
   background-color: #ffd966;
   width: 100%;
   display: flex;
   justify-content: center;
 }
-

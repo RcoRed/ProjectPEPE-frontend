@@ -1,0 +1,45 @@
+.main-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    font-size: 1.8rem;
+    background-color: #FFF2CC;
+}
+
+.div-info{
+    border: 1px solid #DFA67B;
+    width: 70%;
+    box-shadow: -16px 17px 0px -2px #d56b1a;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    text-transform: capitalize;
+}
+
+.div-info-separator{
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #DFA67B;
+    
+}
+
+.div-info-separator:last-child .info-input-div{
+    width: 500px;
+    text-transform: none;
+}
+
+.div-info-separator:last-child{
+    border-bottom: none;
+}
+
+.info-input-div{
+    width: 300px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.info-input-div label{
+    font-size: 1.2em;
+    font-weight: 700;
+}
