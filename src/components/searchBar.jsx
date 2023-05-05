@@ -4,12 +4,6 @@ import { useState } from "react";
 
 export default function Searchbar({ user }) {
   const [namePart, setNamePart] = useState("");
-
-  const loadCards = () => {
-    //semplice redirect che come parametri avrà quello del form inviato (method GET)
-    redirect("/");
-  };
-
   const submit = useSubmit();
 
   const handleChange = (event) => {

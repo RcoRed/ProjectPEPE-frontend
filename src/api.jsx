@@ -1,10 +1,14 @@
 import axios from "axios";
 
 //se arriveranno valori undefined allora il loro default sarà null (cioè cio che vogliamo)
-export default async function ApiRecipe({ myDish = null, namePart = null, myDiet = null, myDifficulty = null, myToCook = null }) {
+export default async function ApiRecipe({
+  myDish = null,
+  namePart = null,
+  myDiet = null,
+  myDifficulty = null,
+  myToCook = null,
+}) {
   console.log("attendi risposta per...");
-  console.log(namePart);
-  console.log(myDish);
   let result = await axios.get(`http://localhost:8080/api/recipe`, {
     params: {
       dish: myDish,
@@ -38,7 +42,7 @@ export async function ApiRegistration(person) {
   );
   console.log(data);
   localStorage.setItem("token", data.accessToken);
-  return data;
+  return data.person;
 }
 
 export async function ApiLogin(personLogin) {
@@ -52,23 +56,21 @@ export async function ApiLogin(personLogin) {
   );
   console.log(data);
   localStorage.setItem("token", data.accessToken);
-  return data;
+  return data.person;
 }
 
 export async function ApiFullRecipe({ myId }) {
-  let result = await axios.get(`http://localhost:8080/api/recipe/${myId}`);
-  console.log(myId);
-  console.log(result);
-  return result.data;
+  console.log("attendi risultato di...");
+  let { data } = await axios.get(`http://localhost:8080/api/recipe/${myId}`);
+  console.log(data);
+  return data;
 }
 
 export async function GetPerson({ userId }) {
-  console.log(localStorage.getItem("token"));
-  let result = await axios.get(
-    `http://localhost:8080/api/person/${userId}`,
-    {
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-    }
-  );
-  return result.data;
+  console.log("attendi risultato di...");
+  let { data } = await axios.get(`http://localhost:8080/api/person/${userId}`, {
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  });
+  console.log(data);
+  return data;
 }
