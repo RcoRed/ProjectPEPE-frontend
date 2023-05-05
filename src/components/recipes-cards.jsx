@@ -6,12 +6,6 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 export async function loader({ request }) {
-  const myNPage = 0;
-  const myNRecipes = 9;
-  const myNPage = 0;
-  const myNRecipes = 9;
-  const myNPage = 0;
-  const myNRecipes = 9;
   //leggo la richesta fatta da nostro router
   const url = new URL(request.url);
   console.log(url);
