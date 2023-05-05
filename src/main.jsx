@@ -13,8 +13,14 @@ import ErrorPage from "./error-page";
 import FullRecipe, { loader as fullLoader } from "./components/full-recipe";
 import UserPage from "./components/user-page";
 import PersonalInfo from "./components/personal-info";
-import TasteComponent, { loader as tasteComponentLoader } from "./components/taste-component";
-import FoodStorage, { loader as foodStorageLoader } from "./components/food-storage";
+import TasteComponent, {
+  loader as tasteComponentLoader,
+} from "./components/taste-component";
+import FoodStorage, {
+  loader as foodStorageLoader,
+} from "./components/food-storage";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 const router = createBrowserRouter([
   {
@@ -40,9 +46,9 @@ const router = createBrowserRouter([
           },
           {
             path: "/recipe",
-            element: <FullRecipe/>,
+            element: <FullRecipe />,
             loader: fullLoader,
-          }
+          },
         ],
       },
     ],
@@ -65,7 +71,7 @@ const router = createBrowserRouter([
           {
             //path default figlio di App
             index: true,
-            element: <PersonalInfo/>,
+            element: <PersonalInfo />,
             //il loader verrà eseguito ogni volta che sarà fatto una richiesta con questo path
           },
           {
@@ -76,17 +82,19 @@ const router = createBrowserRouter([
           },
           {
             path: "/user/food-storage",
-            element: <FoodStorage/>,
+            element: <FoodStorage />,
             loader: foodStorageLoader,
-          }
+          },
         ],
       },
     ],
-  }
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <Provider store={store}>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  </Provider>
 );
