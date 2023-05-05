@@ -1,14 +1,11 @@
 import "./App.css";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Header from "./components/header";
-import { useState } from "react";
 
 export default function App() {
-  const { state } = useLocation();
-  const [user, setUser] = useState(state);
   return (
     <div className="App">
-      <Header user={user} />
+      <Header />
       <main>
         <Outlet />
       </main>

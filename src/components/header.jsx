@@ -2,13 +2,20 @@ import "/src/components-style/header.css";
 import logo from "/src/images/Logo.png";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Searchbar from "./searchBar";
+import { useSelector } from "react-redux";
 
-function Header({ user }) {
+function Header() {
+  const { user } = useSelector((state) => {
+    return {
+      user: state.user.user,
+    };
+  });
+
   const navigate = useNavigate();
   const toUser = () => {
-    navigate("/user", { state: user.person });
+    navigate("/user");
   };
-  console.log(user);
+
   return (
     <header>
       <div className="head">
@@ -20,7 +27,7 @@ function Header({ user }) {
           <div className="divBenvenuto">
             <p>Benvenuto</p>
             <strong onClick={toUser}>
-              {user.person.firstname} {user.person.lastname}
+              {user.firstname} {user.lastname}
             </strong>
           </div>
         ) : (

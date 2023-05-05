@@ -1,10 +1,17 @@
 import { Form, redirect, useSubmit } from "react-router-dom";
 import "/src/components-style/searchbar.css";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
-export default function Searchbar({ user }) {
+export default function Searchbar() {
   const [namePart, setNamePart] = useState("");
   const submit = useSubmit();
+
+  const { user } = useSelector((state) => {
+    return {
+      user: state.user.user,
+    };
+  });
 
   const handleChange = (event) => {
     setNamePart(event.target.value);
