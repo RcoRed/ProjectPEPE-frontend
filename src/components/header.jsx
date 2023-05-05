@@ -6,7 +6,7 @@ import Searchbar from "./searchBar";
 function Header({ user }) {
   const navigate = useNavigate();
   const toUser = () => {
-    navigate("/user", { state: user });
+    navigate("/user", { state: user.person });
   };
   console.log(user);
   return (
@@ -20,7 +20,7 @@ function Header({ user }) {
           <div className="divBenvenuto">
             <p>Benvenuto</p>
             <strong onClick={toUser}>
-              {user.firstname} {user.lastname}
+              {user.person.firstname} {user.person.lastname}
             </strong>
           </div>
         ) : (

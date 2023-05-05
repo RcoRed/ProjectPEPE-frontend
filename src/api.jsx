@@ -38,7 +38,7 @@ export async function ApiRegistration(person) {
   );
   console.log(data);
   localStorage.setItem("token", data.accessToken);
-  return data.person;
+  return data;
 }
 
 export async function ApiLogin(personLogin) {
@@ -52,7 +52,7 @@ export async function ApiLogin(personLogin) {
   );
   console.log(data);
   localStorage.setItem("token", data.accessToken);
-  return data.person;
+  return data;
 }
 
 export async function ApiFullRecipe({ myId }) {
@@ -70,24 +70,5 @@ export async function GetPerson({ userId }) {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     }
   );
-  return result.data;
-}
-
-export async function ApiRecipeAuth({ myDish = null, namePart = null, myDiet = null, myDifficulty = null, myToCook = null, myId = null }) {
-  console.log("attendi risposta per...");
-  console.log(namePart);
-  console.log(myDish);
-  let result = await axios.get(`http://localhost:8080/api/v1/recipeauth`, {
-    params: {
-      dish: myDish,
-      recipeName: namePart,
-      diet: myDiet,
-      difficulty: myDifficulty,
-      toCook: myToCook,
-      idPerson: myId,
-    },
-    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-  });
-  console.log(result);
   return result.data;
 }
