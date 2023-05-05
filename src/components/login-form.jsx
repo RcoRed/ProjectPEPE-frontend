@@ -11,6 +11,7 @@ function LoginForm() {
       password: document.querySelector("#password").value,
     };
     const data = await ApiLogin(personLogin);
+    console.log("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
     console.log(data);
     navigate("/", { state: data });
   };

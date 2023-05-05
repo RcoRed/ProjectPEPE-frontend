@@ -32,5 +32,15 @@
 }
 
 .navlink-button:hover{
-    background-color: #fff2cc;    
+    background-color: #fff2cc;
+    cursor: pointer;    
+}
+
+.logout-button-red{
+    background-color: rgba(255, 34, 34, 0.817);
+    color: white;
+}
+
+.logout-button-red:hover{
+    color: black;
 }
