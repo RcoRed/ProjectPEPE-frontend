@@ -21,7 +21,7 @@ export default function UserPage(){
                 </div>
                 <div className="logout-button">
                     <NavLink to={"/"} className="navlink">
-                        <button className="navlink-button">Logout</button>
+                        <button className="navlink-button logout-button-red">Logout</button>
                     </NavLink>
                 </div>                
             </nav>
