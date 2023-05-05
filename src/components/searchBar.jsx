@@ -2,10 +2,6 @@ import { Form, redirect, useSubmit } from "react-router-dom";
 import "/src/components-style/searchbar.css";
 import { useState } from "react";
 
-function action() {
-  redirect("/");
-}
-
 export default function Searchbar({ user }) {
   const [namePart, setNamePart] = useState("");
 
@@ -21,7 +17,15 @@ export default function Searchbar({ user }) {
   };
 
   return (
-    <Form className="searchbar" role="search" onSubmit={loadCards}>
+    <Form
+      className="searchbar"
+      role="search"
+      onSubmit={(event) => {
+        submit(event.currentTarget.form, {
+          action: "/",
+        });
+      }}
+    >
       <input
         id="inputRecipeName"
         name="inputRecipeName"
@@ -41,7 +45,9 @@ export default function Searchbar({ user }) {
               className="filter-select select-auth"
               name="can-cook"
               onChange={(event) => {
-                submit(event.currentTarget.form);
+                submit(event.currentTarget.form, {
+                  action: "/",
+                });
               }}
             >
               <option value="">Nessuno</option>
@@ -60,10 +66,12 @@ export default function Searchbar({ user }) {
             className="filter-select"
             name="diet"
             onChange={(event) => {
-              submit(event.currentTarget.form);
+              submit(event.currentTarget.form, {
+                action: "/",
+              });
             }}
           >
-            <option value="OMNIVOROUS">Tutti</option>
+            <option value="">Tutti</option>
             <option value="VEGETARIAN">Vegetariana</option>
             <option value="VEGAN">Vegana</option>
           </select>
@@ -76,7 +84,9 @@ export default function Searchbar({ user }) {
             className="filter-select"
             name="difficulty"
             onChange={(event) => {
-              submit(event.currentTarget.form);
+              submit(event.currentTarget.form, {
+                action: "/",
+              });
             }}
           >
             <option value="">Tutti</option>
@@ -93,7 +103,9 @@ export default function Searchbar({ user }) {
             className="filter-select"
             name="to-cook"
             onChange={(event) => {
-              submit(event.currentTarget.form);
+              submit(event.currentTarget.form, {
+                action: "/",
+              });
             }}
           >
             <option value="">Tutti</option>

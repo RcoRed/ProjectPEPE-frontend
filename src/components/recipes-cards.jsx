@@ -22,7 +22,7 @@ export default function RecipesCards() {
   //leggo il risultato ritornato dal loader
   const { recipes } = useLoaderData();
 
-  const navigate = useNavigate();     
+  const navigate = useNavigate();
 
   const renderedCard = recipes.map((recipe) => {
     const handleClick = () => {
