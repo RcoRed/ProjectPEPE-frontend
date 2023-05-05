@@ -12,11 +12,35 @@ export default async function ApiRecipe({
   let result = await axios.get(`http://localhost:8080/api/recipe`, {
     params: {
       dish: myDish,
-      recipeName: namePart,
+      namePart: namePart,
       diet: myDiet,
       difficulty: myDifficulty,
       toCook: myToCook,
     },
+  });
+  console.log(result);
+  return result.data;
+}
+
+export async function ApiRecipeAuth({
+  myDish = null,
+  namePart = null,
+  myDiet = null,
+  myDifficulty = null,
+  myToCook = null,
+  myIdPerson = null,
+}) {
+  console.log("attendi risposta per...");
+  let result = await axios.get(`http://localhost:8080/api/v1/recipeauth`, {
+    params: {
+      dish: myDish,
+      namePart: namePart,
+      diet: myDiet,
+      difficulty: myDifficulty,
+      toCook: myToCook,
+      idPerson: myIdPerson,
+    },
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
   });
   console.log(result);
   return result.data;

@@ -1,4 +1,4 @@
-import { Form, redirect, useSubmit } from "react-router-dom";
+import { Form, useSubmit } from "react-router-dom";
 import "/src/components-style/searchbar.css";
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -44,7 +44,7 @@ export default function Searchbar() {
             </label>
             <select
               className="filter-select select-auth"
-              name="can-cook"
+              name="personal-filter"
               onChange={(event) => {
                 submit(event.currentTarget.form, {
                   action: "/",
@@ -53,7 +53,7 @@ export default function Searchbar() {
             >
               <option value="">Nessuno</option>
               <option value="can-cook">Cosa posso cucinare</option>
-              <option value="avoiding-food">In base ai gusti</option>
+              <option value={user.id}>In base ai gusti</option>
             </select>
           </div>
         </>
