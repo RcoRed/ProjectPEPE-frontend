@@ -1,22 +1,11 @@
-import { useLoaderData } from "react-router-dom";
-import { GetPerson } from "../api";
+import { useLocation } from "react-router-dom";
 import "/src/components-style/personal-info.css";
 import { useState } from "react";
 
-export async function loader({ request }) {
-  //leggo la richesta fatta da nostro router
-  const url = new URL(request.url);
-  console.log(url);
-  //leggo i parametri passati dalla richiesta/url
-  const userId = url.searchParams.get("id");
-  const person = await GetPerson({ userId });
-  return { person };
-}
-
 export default function PersonalInfo() {
-  const { person } = useLoaderData();
-  const [personState, setPerson] = useState(person);
-  console.log(person);
+  const { state } = useLocation();
+  console.log(state);
+  const [personState, setPerson] = useState(state);
   return (
     <div className="div-info">
       <div className="div-info-separator">

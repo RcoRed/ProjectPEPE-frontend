@@ -6,8 +6,8 @@ import Searchbar from "./searchBar";
 function Header({ user }) {
   const navigate = useNavigate();
   const toUser = () => {
-    navigate("/user", {state: user});
-  }
+    navigate("/user", { state: user.person });
+  };
   console.log(user);
   return (
     <header>
@@ -15,15 +15,13 @@ function Header({ user }) {
         <div className="div-logo">
           <img src={logo} alt="logo"></img>
         </div>
-        <Searchbar user={user}/>
+        <Searchbar user={user} />
         {user ? (
           <div className="divBenvenuto">
             <p>Benvenuto</p>
-            <Link to={`/user?id=${user.person.id}`}>
-              <strong>
-                {user.person.firstname} {user.person.lastname}
-              </strong>
-            </Link>
+            <strong onClick={toUser}>
+              {user.person.firstname} {user.person.lastname}
+            </strong>
           </div>
         ) : (
           <div className="div-button">
