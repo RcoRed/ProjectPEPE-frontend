@@ -51,46 +51,52 @@ export default function RecipesCards() {
   });
 
   const moreRecipes = async () => {
+    console.log("carico la pagina: " + page);
     if (params.myIdPerson) {
-      const response = await ApiRecipeAuth(searchParams, myDish, page + 1);
+      const response = await ApiRecipeAuth(searchParams, myDish, page);
+      console.log(response);
       if (!response.length) {
         setAllRecipesViewed(true);
+      } else {
+        setRecipes([...recipes, ...response]);
       }
-      setRecipes([...recipes, ...response]);
     } else {
-      const response = await ApiRecipe(searchParams, myDish, page + 1);
+      const response = await ApiRecipe(searchParams, myDish, page);
       if (!response.length) {
         setAllRecipesViewed(true);
+      } else {
+        setRecipes([...recipes, ...response]);
       }
-      setRecipes([...recipes, ...response]);
     }
     setPage(page + 1);
   };
 
   async function loadRecipes() {
+    console.log("carico la pagina: " + page);
     setAllRecipesViewed(false);
     if (params.myIdPerson) {
       //controllo necessario
       if (pathname == "/") {
-        params.myNPage = searchParams.myNPage;
-        params.myNRecipes = 12;
-        console.log(params.myNPage);
         //se la richiesta arriva da "/" allora arriva dalla form e posso passare params perchè il loader ha letto i dati dalla richiesta
         //poi aggiorno lo stato del redux
         dispatch(changeSearchParams(params));
         const response = await ApiRecipeAuth(params, myDish);
+        console.log(response);
         if (!response.length) {
           setAllRecipesViewed(true);
+        } else {
+          setRecipes(response);
         }
-        setRecipes(response);
       } else {
         //se la richesta non arriva da "/" cioè non dal form allora devo passare lo stato del redux
         //perche il loader non ha potuto caricare i dati necessari per parms, quindi utilizzo i dati che ho salvato nel redux
         const response = await ApiRecipeAuth(searchParams, myDish);
+        console.log(response);
         if (!response.length) {
           setAllRecipesViewed(true);
+        } else {
+          setRecipes(response);
         }
-        setRecipes(response);
       }
     } else {
       //controllo necessario
@@ -101,18 +107,20 @@ export default function RecipesCards() {
         const response = await ApiRecipe(params, myDish);
         if (!response.length) {
           setAllRecipesViewed(true);
+        } else {
+          setRecipes(response);
         }
-        setRecipes(response);
       } else {
         //se la richesta non arriva da "/" cioè non dal form allora devo passare lo stato del redux
         //perche il loader non ha potuto caricare i dati necessari per parms, quindi utilizzo i dati che ho salvato nel redux
         const response = await ApiRecipe(searchParams, myDish);
         if (!response.length) {
           setAllRecipesViewed(true);
+        } else {
+          setRecipes(response);
         }
-        setRecipes(response);
       }
-      setPage(0);
+      setPage(1);
     }
     //faccio questi controlli perchè se faccio l'aggiornamento nello useEffect (if commentato) aggiorna lo stato del redux
     //ma all'api passa lo stato precedente del redux (non so perchè...) infatti se poi si continuasse la navigazione

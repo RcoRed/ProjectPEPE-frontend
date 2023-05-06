@@ -35,10 +35,10 @@ export async function ApiRecipeAuth(
     myDifficulty = null,
     myToCook = null,
     myIdPerson = null,
-    myNPage = 0,
     myNRecipes = 12,
   },
-  myDish = null
+  myDish = null,
+  myNPage = 0
 ) {
   console.log("attendi risposta per... auth");
   let result = await axios.get(`http://localhost:8080/api/v1/recipeauth`, {
