@@ -1,9 +1,16 @@
 import { Form, redirect, useNavigate } from "react-router-dom";
 import "/src/components-style/registration-form.css";
 import { ApiRegistration } from "../api";
+import { useDispatch } from "react-redux";
+import { changeUser } from "../store";
 
 function RegistrationForm() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  function addUser(data) {
+    dispatch(changeUser(data));
+  }
 
   const sendRegistrationRequest = async (event) => {
     event.preventDefault();
@@ -21,8 +28,8 @@ function RegistrationForm() {
       password: document.querySelector("#password").value,
     };
     const data = await ApiRegistration(person);
-    console.log(data);
-    navigate("/", { state: data });
+    addUser(data);
+    navigate("/");
   };
 
   return (

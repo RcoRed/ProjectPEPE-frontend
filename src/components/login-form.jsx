@@ -1,8 +1,15 @@
 import { Form, Link, useNavigate } from "react-router-dom";
 import "/src/components-style/login-form.css";
 import { ApiLogin } from "../api";
+import { useDispatch } from "react-redux";
+import { changeUser } from "../store";
 function LoginForm() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  function addUser(data) {
+    dispatch(changeUser(data));
+  }
 
   const sendLoginRequest = async (event) => {
     event.preventDefault();
@@ -11,9 +18,8 @@ function LoginForm() {
       password: document.querySelector("#password").value,
     };
     const data = await ApiLogin(personLogin);
-    console.log("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
-    console.log(data);
-    navigate("/", { state: data });
+    addUser(data);
+    navigate("/");
   };
 
   return (

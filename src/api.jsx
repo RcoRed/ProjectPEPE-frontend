@@ -1,18 +1,58 @@
 import axios from "axios";
 
 //se arriveranno valori undefined allora il loro default sarà null (cioè cio che vogliamo)
-export default async function ApiRecipe({ myDish = null, namePart = null, myDiet = null, myDifficulty = null, myToCook = null }) {
+export default async function ApiRecipe(
+  {
+    namePart = null,
+    myDiet = null,
+    myDifficulty = null,
+    myToCook = null,
+    myNRecipes = 12,
+  },
+  myDish = null,
+  myNPage = 0
+) {
   console.log("attendi risposta per...");
-  console.log(namePart);
-  console.log(myDish);
   let result = await axios.get(`http://localhost:8080/api/recipe`, {
     params: {
       dish: myDish,
-      recipeName: namePart,
+      namePart: namePart,
       diet: myDiet,
       difficulty: myDifficulty,
       toCook: myToCook,
+      nPage: myNPage,
+      nRecipes: myNRecipes,
     },
+  });
+  console.log(result);
+  return result.data;
+}
+
+export async function ApiRecipeAuth(
+  {
+    namePart = null,
+    myDiet = null,
+    myDifficulty = null,
+    myToCook = null,
+    myIdPerson = null,
+    myNRecipes = 12,
+  },
+  myDish = null,
+  myNPage = 0
+) {
+  console.log("attendi risposta per... auth");
+  let result = await axios.get(`http://localhost:8080/api/v1/recipeauth`, {
+    params: {
+      dish: myDish,
+      namePart: namePart,
+      diet: myDiet,
+      difficulty: myDifficulty,
+      toCook: myToCook,
+      idPerson: myIdPerson,
+      nPage: myNPage,
+      nRecipes: myNRecipes,
+    },
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
   });
   console.log(result);
   return result.data;
@@ -56,38 +96,17 @@ export async function ApiLogin(personLogin) {
 }
 
 export async function ApiFullRecipe({ myId }) {
-  let result = await axios.get(`http://localhost:8080/api/recipe/${myId}`);
-  console.log(myId);
-  console.log(result);
-  return result.data;
+  console.log("attendi risultato di...");
+  let { data } = await axios.get(`http://localhost:8080/api/recipe/${myId}`);
+  console.log(data);
+  return data;
 }
 
 export async function GetPerson({ userId }) {
-  console.log(localStorage.getItem("token"));
-  let result = await axios.get(
-    `http://localhost:8080/api/person/${userId}`,
-    {
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-    }
-  );
-  return result.data;
-}
-
-export async function ApiRecipeAuth({ myDish = null, namePart = null, myDiet = null, myDifficulty = null, myToCook = null, myId = null }) {
-  console.log("attendi risposta per...");
-  console.log(namePart);
-  console.log(myDish);
-  let result = await axios.get(`http://localhost:8080/api/v1/recipeauth`, {
-    params: {
-      dish: myDish,
-      recipeName: namePart,
-      diet: myDiet,
-      difficulty: myDifficulty,
-      toCook: myToCook,
-      idPerson: myId,
-    },
+  console.log("attendi risultato di...");
+  let { data } = await axios.get(`http://localhost:8080/api/person/${userId}`, {
     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
   });
-  console.log(result);
-  return result.data;
+  console.log(data);
+  return data;
 }
