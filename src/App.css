@@ -1,4 +1,22 @@
 main {
   display: flex;
   min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+main button {
+  border-radius: 10px;
+  background-color: #fff2cc;
+  height: 50%;
+  width: 13%;
+  padding: 15px 40px;
+  border: 1px solid #dfa67b;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+main button:hover {
+  cursor: pointer;
+  background-color: #f4b183;
+  color: #ffffff;
 }

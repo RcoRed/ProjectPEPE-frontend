@@ -4,7 +4,7 @@ import ApiRecipe, { ApiRecipeAuth } from "../api";
 import { Link, useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeSearchParams } from "../store";
+import { changeSearchParams, setMyNPage } from "../store";
 
 //il loader non riesco a sostituirlo perche mi serve che ci sia uno useEffect (ad esempio) che parta ogni volta
 //che viene fatta la richiesta di questa pagina (NON ogni volta che si aggiorna il component)
@@ -38,27 +38,59 @@ export default function RecipesCards() {
   //leggo il risultato ritornato dal loader
   const [params, pathname] = useLoaderData();
   const [recipes, setRecipes] = useState([]);
+  const [page, setPage] = useState(0);
+  const [allRecipesViewed, setAllRecipesViewed] = useState(false);
   const dispatch = useDispatch();
 
-  const { myDish, searchParams } = useSelector((state) => {
+  const { myDish, searchParams, myNPage } = useSelector((state) => {
     return {
       myDish: state.searchParams.myDish,
       searchParams: state.searchParams.searchParams,
+      myNPage: state.searchParams.searchParams.myNPage,
     };
   });
 
+  const moreRecipes = async () => {
+    if (params.myIdPerson) {
+      const response = await ApiRecipeAuth(searchParams, myDish, page + 1);
+      if (!response.length) {
+        setAllRecipesViewed(true);
+      }
+      setRecipes([...recipes, ...response]);
+    } else {
+      const response = await ApiRecipe(searchParams, myDish, page + 1);
+      if (!response.length) {
+        setAllRecipesViewed(true);
+      }
+      setRecipes([...recipes, ...response]);
+    }
+    setPage(page + 1);
+  };
+
   async function loadRecipes() {
+    setAllRecipesViewed(false);
     if (params.myIdPerson) {
       //controllo necessario
       if (pathname == "/") {
+        params.myNPage = searchParams.myNPage;
+        params.myNRecipes = 12;
+        console.log(params.myNPage);
         //se la richiesta arriva da "/" allora arriva dalla form e posso passare params perchè il loader ha letto i dati dalla richiesta
         //poi aggiorno lo stato del redux
         dispatch(changeSearchParams(params));
-        setRecipes(await ApiRecipeAuth(params, myDish));
+        const response = await ApiRecipeAuth(params, myDish);
+        if (!response.length) {
+          setAllRecipesViewed(true);
+        }
+        setRecipes(response);
       } else {
         //se la richesta non arriva da "/" cioè non dal form allora devo passare lo stato del redux
         //perche il loader non ha potuto caricare i dati necessari per parms, quindi utilizzo i dati che ho salvato nel redux
-        setRecipes(await ApiRecipeAuth(searchParams, myDish));
+        const response = await ApiRecipeAuth(searchParams, myDish);
+        if (!response.length) {
+          setAllRecipesViewed(true);
+        }
+        setRecipes(response);
       }
     } else {
       //controllo necessario
@@ -66,12 +98,21 @@ export default function RecipesCards() {
         //se la richiesta arriva da "/" allora arriva dalla form e posso passare params perchè il loader ha letto i dati dalla richiesta
         //poi aggiorno lo stato del redux
         dispatch(changeSearchParams(params));
-        setRecipes(await ApiRecipe(params, myDish));
+        const response = await ApiRecipe(params, myDish);
+        if (!response.length) {
+          setAllRecipesViewed(true);
+        }
+        setRecipes(response);
       } else {
         //se la richesta non arriva da "/" cioè non dal form allora devo passare lo stato del redux
         //perche il loader non ha potuto caricare i dati necessari per parms, quindi utilizzo i dati che ho salvato nel redux
-        setRecipes(await ApiRecipe(searchParams, myDish));
+        const response = await ApiRecipe(searchParams, myDish);
+        if (!response.length) {
+          setAllRecipesViewed(true);
+        }
+        setRecipes(response);
       }
+      setPage(0);
     }
     //faccio questi controlli perchè se faccio l'aggiornamento nello useEffect (if commentato) aggiorna lo stato del redux
     //ma all'api passa lo stato precedente del redux (non so perchè...) infatti se poi si continuasse la navigazione
@@ -95,5 +136,14 @@ export default function RecipesCards() {
     );
   });
 
-  return <div className="div-cards">{renderedCard}</div>;
+  return (
+    <>
+      <div className="div-cards">{renderedCard}</div>
+      {allRecipesViewed ? (
+        <p>Non ci sono altre Ricette da caricare</p>
+      ) : (
+        <button onClick={moreRecipes}>Carica più ricette</button>
+      )}
+    </>
+  );
 }

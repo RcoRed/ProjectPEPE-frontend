@@ -11,6 +11,8 @@ const searchParamsSlice = createSlice({
       myIdPerson: null,
     },
     myDish: null,
+    myNPage: 0,
+    myNRecipes: 12,
   },
   reducers: {
     changeSearchParams(state, action) {
@@ -19,8 +21,12 @@ const searchParamsSlice = createSlice({
     setMyDish(state, action) {
       state.myDish = action.payload;
     },
+    setMyNPage(state, action) {
+      state.myNPage = action.payload;
+    },
   },
 });
 
-export const { changeSearchParams, setMyDish } = searchParamsSlice.actions;
+export const { changeSearchParams, setMyDish, setMyNPage } =
+  searchParamsSlice.actions;
 export const searchParamsReducer = searchParamsSlice.reducer;

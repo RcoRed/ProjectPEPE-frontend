@@ -2,8 +2,15 @@ import axios from "axios";
 
 //se arriveranno valori undefined allora il loro default sarà null (cioè cio che vogliamo)
 export default async function ApiRecipe(
-  { namePart = null, myDiet = null, myDifficulty = null, myToCook = null },
-  myDish = null
+  {
+    namePart = null,
+    myDiet = null,
+    myDifficulty = null,
+    myToCook = null,
+    myNRecipes = 12,
+  },
+  myDish = null,
+  myNPage = 0
 ) {
   console.log("attendi risposta per...");
   let result = await axios.get(`http://localhost:8080/api/recipe`, {
@@ -13,6 +20,8 @@ export default async function ApiRecipe(
       diet: myDiet,
       difficulty: myDifficulty,
       toCook: myToCook,
+      nPage: myNPage,
+      nRecipes: myNRecipes,
     },
   });
   console.log(result);
@@ -26,6 +35,8 @@ export async function ApiRecipeAuth(
     myDifficulty = null,
     myToCook = null,
     myIdPerson = null,
+    myNPage = 0,
+    myNRecipes = 12,
   },
   myDish = null
 ) {
@@ -38,6 +49,8 @@ export async function ApiRecipeAuth(
       difficulty: myDifficulty,
       toCook: myToCook,
       idPerson: myIdPerson,
+      nPage: myNPage,
+      nRecipes: myNRecipes,
     },
     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
   });

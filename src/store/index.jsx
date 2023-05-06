@@ -4,6 +4,7 @@ import {
   searchParamsReducer,
   changeSearchParams,
   setMyDish,
+  setMyNPage,
 } from "./slices/searchParams";
 
 const store = configureStore({
@@ -13,4 +14,4 @@ const store = configureStore({
   },
 });
 
-export { store, changeUser, changeSearchParams, setMyDish };
+export { store, changeUser, changeSearchParams, setMyDish, setMyNPage };
