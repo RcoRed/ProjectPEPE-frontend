@@ -8,6 +8,10 @@ export default function PersonalInfo() {
     };
   });
 
+  if (!user) {
+    return <div></div>;
+  }
+
   return (
     <div className="div-info">
       <div className="div-info-separator">

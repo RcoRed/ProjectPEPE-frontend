@@ -10,7 +10,7 @@ export default function App() {
         <Outlet />
       </main>
       <footer>
-        <h2>SONO IL FOOTER</h2>
+        <h2>FOOTER</h2>
       </footer>
     </div>
   );

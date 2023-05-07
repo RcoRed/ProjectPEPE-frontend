@@ -13,14 +13,11 @@ import ErrorPage from "./error-page";
 import FullRecipe, { loader as fullLoader } from "./components/full-recipe";
 import UserPage from "./components/user-page";
 import PersonalInfo from "./components/personal-info";
-import TasteComponent, {
-  loader as tasteComponentLoader,
-} from "./components/taste-component";
-import FoodStorage, {
-  loader as foodStorageLoader,
-} from "./components/food-storage";
+import TasteComponent from "./components/taste-component";
+import FoodStorage from "./components/food-storage";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import ErrorPageNotImplemented from "./error-page-not-implemented";
 
 const router = createBrowserRouter([
   {
@@ -78,12 +75,12 @@ const router = createBrowserRouter([
             path: "/user/taste-manager",
             element: <TasteComponent />,
             //il loader verrà eseguito ogni volta che sarà fatto una richiesta con questo path
-            loader: tasteComponentLoader,
+            errorElement: <ErrorPageNotImplemented />,
           },
           {
             path: "/user/food-storage",
             element: <FoodStorage />,
-            loader: foodStorageLoader,
+            errorElement: <ErrorPageNotImplemented />,
           },
         ],
       },

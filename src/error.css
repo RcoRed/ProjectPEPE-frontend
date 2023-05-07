@@ -1,0 +1,15 @@
+.error-not-impl-div,
+.error-page {
+  height: 60%;
+  min-height: 350px;
+  border: 1px solid #dfa67b;
+  width: 70%;
+  background-color: whitesmoke;
+  padding: 40px;
+  box-shadow: -16px 17px 0px -2px #d56b1a;
+  border-radius: 15px;
+}
+.error-not-impl-div p,
+.error-page p {
+  margin-top: 20px;
+}
