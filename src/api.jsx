@@ -110,3 +110,15 @@ export async function GetPerson({ userId }) {
   console.log(data);
   return data;
 }
+
+export async function GetRecipeByFoodStorage(userId){
+  console.log("filtro food storage");
+  let { data } = await axios.get(`http://localhost:8080/api/v1/recipeauth/foodstorage`, {
+    params: {
+      idPerson: userId,
+    },
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  });
+  console.log(data);
+  return data;
+}
