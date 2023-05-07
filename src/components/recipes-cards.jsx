@@ -84,9 +84,8 @@ export default function RecipesCards() {
         console.log(response);
         if (!response.length) {
           setAllRecipesViewed(true);
-        } else {
-          setRecipes(response);
         }
+        setRecipes(response);
       } else {
         //se la richesta non arriva da "/" cioè non dal form allora devo passare lo stato del redux
         //perche il loader non ha potuto caricare i dati necessari per parms, quindi utilizzo i dati che ho salvato nel redux
@@ -94,9 +93,8 @@ export default function RecipesCards() {
         console.log(response);
         if (!response.length) {
           setAllRecipesViewed(true);
-        } else {
-          setRecipes(response);
         }
+        setRecipes(response);
       }
     } else {
       //controllo necessario
@@ -107,18 +105,16 @@ export default function RecipesCards() {
         const response = await ApiRecipe(params, myDish);
         if (!response.length) {
           setAllRecipesViewed(true);
-        } else {
-          setRecipes(response);
         }
+        setRecipes(response);
       } else {
         //se la richesta non arriva da "/" cioè non dal form allora devo passare lo stato del redux
         //perche il loader non ha potuto caricare i dati necessari per parms, quindi utilizzo i dati che ho salvato nel redux
         const response = await ApiRecipe(searchParams, myDish);
         if (!response.length) {
           setAllRecipesViewed(true);
-        } else {
-          setRecipes(response);
         }
+        setRecipes(response);
       }
       setPage(1);
     }
