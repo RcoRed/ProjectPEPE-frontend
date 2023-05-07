@@ -1,6 +1,6 @@
 import "/src/components-style/card.css";
 import ShowCard from "./showCard";
-import ApiRecipe, { ApiRecipeAuth } from "../api";
+import ApiRecipe, { ApiRecipeAuth, GetRecipeByFoodStorage } from "../api";
 import { Link, useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -42,11 +42,12 @@ export default function RecipesCards() {
   const [allRecipesViewed, setAllRecipesViewed] = useState(false);
   const dispatch = useDispatch();
 
-  const { myDish, searchParams, myNPage } = useSelector((state) => {
+  const { myDish, searchParams, myNPage, myUser } = useSelector((state) => {
     return {
       myDish: state.searchParams.myDish,
       searchParams: state.searchParams.searchParams,
       myNPage: state.searchParams.searchParams.myNPage,
+      myUser: state.user,
     };
   });
 
@@ -74,6 +75,13 @@ export default function RecipesCards() {
   async function loadRecipes() {
     console.log("carico la pagina: " + page);
     setAllRecipesViewed(false);
+    if(params.myIdPerson == "can-cook"){
+      console.log("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+      console.log(myUser.user.id);
+      const filterFoodStorage = await GetRecipeByFoodStorage(myUser.user.id);
+      setAllRecipesViewed(true);
+      setRecipes(filterFoodStorage);
+    }
     if (params.myIdPerson) {
       //controllo necessario
       if (pathname == "/") {
@@ -84,9 +92,8 @@ export default function RecipesCards() {
         console.log(response);
         if (!response.length) {
           setAllRecipesViewed(true);
-        } else {
-          setRecipes(response);
         }
+        setRecipes(response);
       } else {
         //se la richesta non arriva da "/" cioè non dal form allora devo passare lo stato del redux
         //perche il loader non ha potuto caricare i dati necessari per parms, quindi utilizzo i dati che ho salvato nel redux
@@ -94,9 +101,8 @@ export default function RecipesCards() {
         console.log(response);
         if (!response.length) {
           setAllRecipesViewed(true);
-        } else {
-          setRecipes(response);
         }
+        setRecipes(response);
       }
     } else {
       //controllo necessario
@@ -107,18 +113,16 @@ export default function RecipesCards() {
         const response = await ApiRecipe(params, myDish);
         if (!response.length) {
           setAllRecipesViewed(true);
-        } else {
-          setRecipes(response);
         }
+        setRecipes(response);
       } else {
         //se la richesta non arriva da "/" cioè non dal form allora devo passare lo stato del redux
         //perche il loader non ha potuto caricare i dati necessari per parms, quindi utilizzo i dati che ho salvato nel redux
         const response = await ApiRecipe(searchParams, myDish);
         if (!response.length) {
           setAllRecipesViewed(true);
-        } else {
-          setRecipes(response);
         }
+        setRecipes(response);
       }
       setPage(1);
     }
